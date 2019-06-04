@@ -3,9 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
+    "classnames": "^2.2.6",
     "react": "^16.8.6",
+    "react-audio-player": "^0.11.0",
+    "react-bootstrap": "^1.0.0-beta.6",
+    "react-bootstrap-carousel": "^3.4.1",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "react-facebook-account-kit": "^0.1.5",
+    "react-facebook-login": "^4.1.1",
+    "react-google-login": "^5.0.4",
+    "react-leaf-carousel": "^1.2.2",
+    "react-notifications": "^1.4.3",
+    "react-prism": "^4.3.2",
+    "react-radio-buttons": "^1.2.2",
+    "react-responsive-music-player": "^0.4.3",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "2.1.8",
+    "react-scrollbar": "^0.5.6",
+    "reactstrap": "^8.0.0",
+    "video-react": "^0.13.6"
   },
   "scripts": {
     "start": "react-scripts start",

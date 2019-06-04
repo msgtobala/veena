@@ -1,0 +1,302 @@
+	.jp-jplayer{
+		width: 100% !important;
+		height: auto !important;
+	}
+	.jp-jplayer img{
+		width: 100%!important;
+		height: auto !important;
+	}
+	.jp-video-270p {
+    width: 100%;
+}
+	.jp-video .jp-progress {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+}
+.jp-audio, .jp-audio-stream, .jp-video {
+    font-family: Verdana,Arial,sans-serif;
+    line-height: 1.2;
+    border: none;
+    background-color: #fff;
+}
+	.jp-audio {
+    width: 100%;
+    padding: 30px 0px;
+}
+	.jp-type-playlist{
+		background-color: #fff;
+	}
+	.jp-audio .jp-type-playlist .jp-progress {
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+}
+.jp-audio .jp-progress {
+    position: absolute;
+    top: 40px;
+    height: 4px;
+    border-radius: 5px;
+}
+.jp-seek-bar {
+    background: #eab5d6;
+    width: 0;
+    height: 100%;
+    cursor: pointer;
+}
+.video-progress-bar .jp-progress .jp-seek-bar {
+    background: transparent;
+    width: 0;
+    height: 100%;
+    cursor: pointer;
+}
+.jp-play-bar {
+    background: #ea0a8c;
+    width: 0;
+    height: 100%;
+}
+.jp-audio .jp-type-playlist .jp-time-holder {
+    left: 0px;
+    width: 100%;
+    top: 20px;
+}
+.jp-audio .jp-time-holder {
+    position: absolute;
+    top: 15px;
+}
+.jp-current-time {
+    float: left;
+    display: inline;
+    cursor: default;
+}
+.jp-current-time, .jp-duration {
+    width: 45px;
+    font-size: 12px;
+    color: #fff;
+    font-weight: 500;
+    font-style: normal;
+}
+.audio_player{
+    position: relative;
+}
+.audio_player::before{
+    position: absolute;
+    content: '';
+    height: 6px;
+    width: 288px;
+    background-color: #f2f2f2;
+    top: -6px;
+    left: -30px;
+}
+.audio_player .jp-current-time, .jp-duration {
+    font-size: 12px;
+    color: #000;
+    font-weight: 500;
+}
+.jp-duration {
+    float: right;
+    display: inline;
+    text-align: right;
+    cursor: pointer;
+}
+
+.jp-audio .jp-type-playlist .jp-toggles {
+    width: 100%;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    transform: translateX(-50%);
+}
+.jp-audio.audio_player .jp-controls {
+    width: 100%;
+    padding: 45px 70px 0px 65px;
+}
+.jp-audio .jp-interface, .jp-audio-stream .jp-interface {
+    height: 100%;
+}
+.video-progress-bar.jp-interface {
+    position: relative;
+    background-color: #f2f2f2;
+    width: 100%;
+}
+.jp-interface {
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+}
+.player-top-setion{
+	display: flex;
+
+}
+.player-top-setion .image-section{
+	width: 30%;
+}
+.player-top-setion .text-section{
+	width: 50%;
+}
+.player-top-setion .text-section h4{
+	font-size: 18px;
+	color: #414141;
+	font-weight: 500;
+	margin: 0px;
+}
+.player-top-setion .text-section p{
+	font-size: 14px;
+	color: #a3a6a8;
+	font-weight: 500;
+	margin: 0px;
+}
+.player-top-setion .bar-icon{
+	width: 20%;
+	text-align: right;
+}
+.player-top-setion .bar-icon a img{
+	width: 5px;
+	height: 35px;
+}
+.jp-repeat {
+    background: url("../assets/img/repeat.png") 100% 100% no-repeat;
+}
+.custome .jp-repeat {
+    width: 18px !important;
+    height: 18px !important;
+    margin-top: 18px;
+    margin-left: 10px
+}
+.jp-state-looped .jp-repeat:focus {
+    background: url("../assets/img/repeat.png") 100% 100% no-repeat !important;
+}
+.jp-repeat:focus {
+    background: url("../assets/img/repeat.png") 100% 100% no-repeat !important;
+}
+.jp-shuffle {
+    background: url("../assets/img/shufel.png") 100% 100% no-repeat !important;
+    margin-left: 0px;
+    width: 32px;
+    height: 32px;
+}
+.custome .jp-shuffle {
+    width: 18px !important;
+    height: 18px !important;
+    margin-top: 18px;
+}
+.jp-state-shuffled .jp-shuffle:focus {
+    background: url("../assets/img/shufel.png") 100% 100% no-repeat !important;
+}
+.jp-shuffle:focus {
+    background: url("../assets/img/shufel.png") 100% 100% no-repeat !important;
+}
+.jp-previous {
+    background: url("../assets/img/previos.png") 100% 100% no-repeat !important;
+}
+.jp-previous:focus {
+    background: url("../assets/img/previos.png") 100% 100% no-repeat !important;
+}
+.jp-state-playing .jp-play {
+    background: url("../assets/img/play.png") 100% 100% no-repeat !important;
+}
+.jp-state-playing .jp-play:focus {
+    background: url("../assets/img/play.png") 100% 100% no-repeat !important;
+}
+.jp-play {
+    width: 40px;
+    height: 40px;
+    background: url("../assets/img/play.png") 100% 100% no-repeat !important;
+}
+.jp-next {
+    background: url("../assets/img/next.png") 100% 100% no-repeat !important;
+}
+.jp-state-looped .jp-repeat {
+    background: url("../assets/img/repeat.png") 100% 100% no-repeat;
+}
+.jp-toggles button {
+    width: 18px;
+    
+}
+.jp-video .jp-current-time {
+    margin-left: 5px;
+    margin-top: -20px;
+}
+.jp-video .jp-duration {
+    margin-left: 40px;
+    margin-top: -20px;
+    color: #fff;
+    float: left;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+}
+.audio_player{
+
+}
+.jp-controls-holder .text{
+    width: 20%;
+
+}
+.jp-controls-holder .text h3{
+    font-size: 22px;
+    font-weight: 500;
+    margin:10px 0px 5px 0px;
+
+}
+.jp-controls-holder .text p{
+    font-size: 14px;
+    font-weight: 500;
+    margin:10px 0px 5px 0px;
+    color: #a3a6a8;
+
+}
+.jp-controls-holder {
+    width: 100%;
+    display: flex;
+    padding-top: 20px;
+}
+
+.jp-video .jp-type-playlist .jp-controls {
+    width: 40% !important;
+    position: relative !important;
+    padding-left: 25% !important;
+    margin: 0px !important;
+}
+.jp-controls-holder  .video-heart-icon{
+    width: 40%;
+    text-align: right;
+    margin-top: 15px;
+}
+.jp-controls-holder  .video-heart-icon ul {
+    list-style-type: none;
+}
+.jp-controls-holder  .video-heart-icon ul li{
+    display: inline-block;
+    padding-left: 25px;
+}
+.jp-controls-holder  .video-heart-icon ul li .image-svg{
+    width: 5px;
+    height: 20px;
+}
+.jp-audio .jp-controls {
+    width: 100%!important;
+    padding: 40px 60px 0!important;
+}
+.audio-timer .jp-current-time{
+    color: #414141 !important;
+}
+.jp-jplayer {
+    background-color: transparent !important;
+}
+.jp-video .jp-interface {
+     border-top: none!important; 
+}
+.video-progress-bar .jp-next, .video-progress-bar .jp-previous, .video-progress-bar .jp-stop {
+    width: 18px;
+    height: 18px;
+    margin-top: 18px;
+    margin: 18px 10px;
+}
+.video-progress-bar  .jp-play {
+    width: 32px;
+    height: 32px;
+    margin: 10px;
+}
