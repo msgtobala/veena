@@ -1774,6 +1774,12 @@
 	      -ms-flex-flow: wrap;
 	      flex-flow: wrap;
 
+				.add-address-section {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+
 	      li {
 	        list-style-type: none;
 	        width: 33.33%;
@@ -1786,19 +1792,18 @@
 	        position: relative;
 
 	        .image-section {
-	          position: absolute;
-	          top: 25%;
-	          left: 50%;
-	          transform: translate(-50%);
+						a {
+							text-align: center;
+						}
 
 	          img {
-	            width: 100%;
+	            width: 60%;
 	          }
 
 	          h4 {
 	            font-size: 20px;
 	            color: #a3a6a8;
-
+							padding: 18px 0;
 	          }
 
 	        }

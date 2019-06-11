@@ -1,0 +1,73 @@
+.modal-form {
+  position: relative;
+  height: 50px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.modal-form input {
+  width: 100%;
+  height: 100%;
+  color: #595f6e;
+  font-family: sans-serif;
+  padding: 10px 0 5px 0px;
+  border: none;
+  outline: none;
+}
+
+.modal-form label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 16px;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+}
+
+.modal-form label::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+  left: 0;
+  bottom: -3px;
+  transition: transform 0.3s ease;
+}
+
+.content-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  transition: transform 0.3s ease, font-size 0.3s ease, color 0.3s ease,
+    font-weight 0.3s ease;
+}
+
+.spanFocused {
+  transform: translateY(-70%);
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: bold;
+}
+
+.spanNotFocused {
+  transform: translateY(0%);
+}
+
+.spanAfterFocused {
+  opacity: 1;
+}
+
+.spanAfterFocused::after {
+  transform: translate(0%);
+}
+
+.spanAfterNotFocused {
+  opacity: 1;
+}
+
+.spanAfterNotFocused::after {
+  transform: translate(-100%);
+}
