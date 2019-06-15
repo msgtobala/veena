@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "../scss/style.css";
 import "../scss/normalize.css";
 import "../scss/main.css";
@@ -13,7 +14,6 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import ScrollArea from "react-scrollbar";
 import Header from "./Header";
-import { Container, Row, Col } from "reactstrap";
 import LeftSection from "./LeftSection";
 import RightSection from "./RightSection";
 import { RadioGroup, RadioButton } from "react-radio-buttons";
@@ -22,6 +22,7 @@ import {
   NotificationManager
 } from "react-notifications";
 import "react-notifications/lib/notifications.css";
+import { loadProduct } from "../store/actions";
 
 const styles = { height: 400, width: "100%" };
 class Home extends Component {
@@ -98,6 +99,7 @@ class Home extends Component {
 
   loadAlbum = (event, type, album) => {
     console.log(event);
+    this.props.loadProduct(album)
   };
 
   handleShow = () => {
@@ -463,10 +465,6 @@ class Home extends Component {
                     row.photo !== null ? (
                       <div key={index}>
                         <div
-                          style={{
-                            cursor: "pointer"
-                          }}
-                          onClick={e => this.loadAlbum(row, "artist")}
                           className="album-slider-item"
                         >
                           <img
@@ -548,4 +546,12 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => ({
+
+});
+
+const mapDispatchToProps = dispatch => ({
+  loadProduct: data => dispatch(loadProduct(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
