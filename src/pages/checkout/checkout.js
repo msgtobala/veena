@@ -151,7 +151,7 @@ class Checkout extends Component {
             <PaySection productPrice={this.getAmount()} />
           ) : null}
         </MiddleSection>
-        {/* <RightSection /> */}
+        <RightSection />
       </>
     );
   }

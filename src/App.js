@@ -16,6 +16,7 @@ import Music from "./component/Music";
 import Checkout from "./pages/checkout/checkout";
 import ProductHistory from "./pages/checkout/ProductHistory/ProductHistory";
 import Subscription from "./pages/Subscription/Subscription";
+import DetailsPage from './pages/DetailsPage/DetailsPage';
 
 class App extends Component {
   render() {
@@ -32,6 +33,7 @@ class App extends Component {
             <Route path="/checkout" component={Checkout} />
             <Route path="/history" component={ProductHistory} />
             <Route path="/subscribe" component={Subscription} />
+            <Route path="/details" component={DetailsPage} />
           </Switch>
         </div>
       </Router>

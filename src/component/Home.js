@@ -96,6 +96,10 @@ class Home extends Component {
     this.setState({ show: false });
   };
 
+  loadAlbum = (event, type, album) => {
+    console.log(event);
+  };
+
   handleShow = () => {
     this.setState({ show: true });
   };
@@ -142,6 +146,7 @@ class Home extends Component {
     console.log(event.target.value);
     // this.again()
   }
+
   render() {
     let { language } = this.state;
     console.log("Language arri haib", language);
@@ -165,6 +170,7 @@ class Home extends Component {
       console.log(response);
       this.success(response);
     };
+
     return (
       <>
         <Header />
@@ -233,7 +239,13 @@ class Home extends Component {
                 >
                   {popular_albums.data.map((row, index) => (
                     <div key={index}>
-                      <div className="album-slider-item">
+                      <div
+                        style={{
+                          cursor: "pointer"
+                        }}
+                        onClick={e => this.loadAlbum(row, "popular_album")}
+                        className="album-slider-item"
+                      >
                         <img
                           style={{ width: 350, height: 300 }}
                           src={row.cover_images[0].url}
@@ -276,19 +288,35 @@ class Home extends Component {
                   slidesToShow={4}
                   scrollOnDevice={true}
                 >
-                  {trending_audio.data.map((row, index) => (
-                    <div key={index}>
-                      <div className="album-slider-item">
-                        <img
-                          src={row.album.cover_images[0].url}
-                          style={{ height: 150, width: 150 }}
-                          alt=""
-                        />
-                        <h6>{language === "En" ? row.name.en : row.name.hi}</h6>
-                        {/* <p>Kawar Jeet Singh</p> */}
-                      </div>
-                    </div>
-                  ))}
+                  {this.state.trending_audio
+                    ? trending_audio.data.map((row, index) => {
+                        return (
+                          <div key={index}>
+                            <div
+                              style={{
+                                cursor: "pointer"
+                              }}
+                              onClick={e => this.loadAlbum(row, "recommended_album")}
+                              className="album-slider-item"
+                            >
+                              <img
+                                src={
+                                  row.album.cover_images.length !== 0
+                                    ? row.album.cover_images[0].url
+                                    : null
+                                }
+                                style={{ height: 150, width: 150 }}
+                                alt=""
+                              />
+                              <h6>
+                                {language === "En" ? row.name.en : row.name.hi}
+                              </h6>
+                              {/* <p>Kawar Jeet Singh</p> */}
+                            </div>
+                          </div>
+                        );
+                      })
+                    : null}
                 </InfiniteCarousel>
               ) : null}
             </div>
@@ -324,7 +352,13 @@ class Home extends Component {
                 >
                   {trending_video.data.map((row, index) => (
                     <div key={index}>
-                      <div className="album-slider-item">
+                      <div
+                        style={{
+                          cursor: "pointer"
+                        }}
+                        onClick={e => this.loadAlbum(row, "recommended_video")}
+                        className="album-slider-item"
+                      >
                         <img
                           src={row.album.cover_images[0].url}
                           style={{ height: 150, width: 150 }}
@@ -373,7 +407,13 @@ class Home extends Component {
                     // console.log("sgar",row.cover_images.length )
 
                     <div key={index}>
-                      <div className="album-slider-item">
+                      <div
+                        style={{
+                          cursor: "pointer"
+                        }}
+                        onClick={e => this.loadAlbum(row, "new_album")}
+                        className="album-slider-item"
+                      >
                         {row.cover_images.length !== 0 ? (
                           <img
                             src={row.cover_images[0].url}
@@ -422,7 +462,13 @@ class Home extends Component {
                   {trending_artist.data.map((row, index) =>
                     row.photo !== null ? (
                       <div key={index}>
-                        <div className="album-slider-item">
+                        <div
+                          style={{
+                            cursor: "pointer"
+                          }}
+                          onClick={e => this.loadAlbum(row, "artist")}
+                          className="album-slider-item"
+                        >
                           <img
                             src={row.photo.url}
                             style={{ height: 150, width: 150 }}
@@ -496,7 +542,7 @@ class Home extends Component {
             </div>
           </div>
         </div>
-        <RightSection />
+        {/* <RightSection /> */}
       </>
     );
   }
