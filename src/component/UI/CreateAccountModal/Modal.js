@@ -1,15 +1,12 @@
 import React, { Component } from "react";
-import "./style.css";
 
-import closeIcon from "../../assets/img/svg_image/closeICON.svg";
-import Input from "../UI/Input/Input";
+import {} from "./styles";
+import closeIcon from "../../../assets/img/svg_image/closeICON.svg";
+import Input from "../../UI/Input/Input";
 
-class AddresssModal extends Component {
-  myRef = React.createRef();
+class Modal extends Component {
   state = {
     validForm: false,
-    editId: null,
-    editType: null,
     addressForm: {
       name: {
         elementType: "input",
@@ -26,63 +23,33 @@ class AddresssModal extends Component {
         },
         valid: false
       },
-      addressLine1: {
+      email: {
         elementType: "input",
         elementConfig: {
           type: "text",
-          name: "address1",
-          "data-name": "Address No 1"
+          name: "email",
+          "data-name": "Email"
         },
         value: "",
         focused: false,
         validation: {
           required: true,
-          regex: /^[A-Za-z-,]{3,10}/g
+          regex: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g
         },
         valid: false
       },
-      addressLine2: {
+      password: {
         elementType: "input",
         elementConfig: {
-          type: "text",
-          name: "address2",
-          "data-name": "Address No 2"
+          type: "password",
+          name: "password",
+          "data-name": "Password"
         },
         value: "",
         focused: false,
         validation: {
           required: true,
-          regex: /^[A-Za-z-,]{3,15}/g
-        },
-        valid: false
-      },
-      pinCode: {
-        elementType: "input",
-        elementConfig: {
-          type: "text",
-          name: "pinCode",
-          "data-name": "Pin Code"
-        },
-        value: "",
-        focused: false,
-        validation: {
-          required: true,
-          regex: /^[0-9]{6}/g
-        },
-        valid: false
-      },
-      city: {
-        elementType: "input",
-        elementConfig: {
-          type: "text",
-          name: "city",
-          "data-name": "City"
-        },
-        value: "",
-        focused: false,
-        validation: {
-          required: true,
-          regex: /^[A-Za-z-,]{3,15}/g
+          regex: /[a-zA-z0-9]{5,8}/g
         },
         valid: false
       },
@@ -101,43 +68,6 @@ class AddresssModal extends Component {
         },
         valid: false
       }
-    }
-  };
-
-  componentDidUpdate = () => {
-    if (
-      (this.props.type === "Edit" && this.state.editId === null) ||
-      (this.props.type === "Edit" && this.props.editId !== this.state.editId)
-    ) {
-      let updatedAddressForm = { ...this.state.addressForm };
-      let currAddr = this.props.editAddress;
-      for (const type in updatedAddressForm) {
-        updatedAddressForm[type].value = currAddr[type];
-        updatedAddressForm[type].focused = true;
-      }
-      if (currAddr.default === true) {
-        this.myRef.current.checked = true;
-      }
-      this.setState({
-        editId: this.props.editId,
-        addressForm: updatedAddressForm,
-        editType: "Edit"
-      });
-    } else if (
-      this.props.editId === null &&
-      this.props.type === "Add" &&
-      this.state.editType !== "Add"
-    ) {
-      let updatedAddressForm = { ...this.state.addressForm };
-      for (const type in updatedAddressForm) {
-        updatedAddressForm[type].value = "";
-        updatedAddressForm[type].focused = false;
-      }
-      this.setState({
-        editId: null,
-        addressForm: updatedAddressForm,
-        editType: "Add"
-      });
     }
   };
 
@@ -195,24 +125,6 @@ class AddresssModal extends Component {
     this.setState({ addressForm: updatedAddressForm });
   };
 
-  changeDefaultAddressHandler = () => {
-    console.log(this.state.editId);
-    console.log(this.props.editAddress);
-    console.log(this.state.editType);
-    if (this.state.editType === "Add") {
-      this.props.setDefaultAddress();
-    } else if (this.state.editType === "Edit") {
-      console.log(this.myRef.current.checked);
-      // this.props.editDefaultAddress();
-    }
-  };
-
-  onSaveAddressHandler = () => {
-    if (this.state.editType === "Add") {
-    } else if (this.state.editType === "Edit") {
-    }
-  };
-
   render() {
     const formElementArray = [];
     for (let itr in this.state.addressForm) {
@@ -240,35 +152,17 @@ class AddresssModal extends Component {
             changed={event => this.inputChangedHandler(event, ele.id)}
           />
         ))}
-        <div className="default-address-checkbox">
-          <input
-            className="styled-checkbox"
-            id="styled-checkbox-1"
-            type="checkbox"
-            value="address"
-            ref={this.myRef}
-            onChange={this.changeDefaultAddressHandler}
-          />
-          <label htmlFor="styled-checkbox-1">Set as Default Address</label>
-        </div>
         <div className="button-element">
-          {this.props.type === "Add" ? (
-            <button onClick={this.onSaveAddressHandler}>Save Address </button>
-          ) : (
-            <button onClick={this.onSaveAddressHandler}>Edit Address </button>
-          )}
+          <button onClick={this.onSaveAddressHandler}>CREATE ACCOUNT</button>
         </div>
       </form>
     );
-
     let modalTemplate = null;
     if (this.props.show) {
       modalTemplate = (
         <div className="modal">
           <div className="address-modal-content">
-            <h4 className="add-address-header">{`${
-              this.props.type ? this.props.type : null
-            } a  ${this.props.type === "Add" ? "new " : " "}Address`}</h4>
+            <h4 className="add-address-header">CREATE ACCOUNT</h4>
             {form}
           </div>
         </div>
@@ -278,4 +172,4 @@ class AddresssModal extends Component {
   }
 }
 
-export default AddresssModal;
+export default Modal;

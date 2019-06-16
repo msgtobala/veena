@@ -50,7 +50,7 @@ class DetailsPage extends Component {
             />
           </ProductSection>
         </MiddleSection>
-        {/* <RightSection /> */}
+        <RightSection />
       </>
     );
   }

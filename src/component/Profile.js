@@ -4,21 +4,18 @@ import "../scss/normalize.css";
 import "../scss/main.css";
 import "../scss/custome_audio_video_player.css";
 import "../scss/jplayer.blue.monday.min.css";
-import axios from "axios";
-import RBCarousel from "react-bootstrap-carousel";
-import InfiniteCarousel from "react-leaf-carousel";
 import GoogleLogin from "react-google-login";
 import AccountKit from "react-facebook-account-kit";
 import Header from "./Header";
 import LeftSection from "./LeftSection";
 import RightSection from "./RightSection";
-const styles = { height: 400, width: "100%" };
 
 class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      autoplay: true
+      autoplay: true,
+      edit: false
     };
   }
 
@@ -28,9 +25,13 @@ class Profile extends Component {
   failure = response => {
     console.log(response);
   };
-  render() {
-    let { leftIcon, rightIcon } = this.state;
 
+  editProfileHandler = () => {
+    this.setState(prevState => {
+      return { edit: !prevState.edit };
+    });
+  };
+  render() {
     return (
       <>
         <Header />
@@ -39,16 +40,19 @@ class Profile extends Component {
           <div className="image-and-button-section">
             <div className="profile-left-section">
               <div className="img-section">
-                <img src={require("../assets/img/profile.jpg")} />
+                <img
+                  src={require("../assets/img/profile.jpg")}
+                  alt="profile_image"
+                />
               </div>
-              <h4>Natasha Marya </h4>
+              <h4>Natasha Marya</h4>
               <p>natashamarya@gmail.com</p>
             </div>
             <div className="profile-right-section">
-              <a
-                href="javascript:;"
+              <button
+                href="#"
                 className="shop-cart-button"
-                style={{ right: "-30px" }}
+                style={{ right: "-30px", outline: "none", border: "none" }}
               >
                 <div className="text">
                   <span className="count">90 DAYS</span>
@@ -57,45 +61,76 @@ class Profile extends Component {
                 <span className="img-section">
                   <img
                     src={require("../assets/img/svg_image/cart-white.svg")}
+                    alt="cart_image"
                   />
                 </span>
-              </a>
+              </button>
               <div className="button-section">
-                <a
-                  href="javascript:;"
+                <button
+                  onClick={this.editProfileHandler}
                   className="track-order-button"
-                  style={{ marginRight: "18px" }}
+                  style={{ marginRight: "18px", outline: "none" }}
                 >
                   Edit Profile
-                </a>
-                <a href="javascript:;" className="download-invoice-button">
-                  Upgrade Now
-                </a>
+                </button>
+                <button className="download-invoice-button">Upgrade Now</button>
               </div>
             </div>
           </div>
-          <div className="general-details-section">
+          <div className="general-details-section" style={{ height: "auto" }}>
             <h2>General Details</h2>
             <div className="edit-details-section">
               <div className="general-left-sec">
                 <p>Name</p>
-                <input type="text" value="Rahul Kumar Sahu" />
+                <input
+                  type="text"
+                  style={{
+                    cursor: !this.state.edit ? "not-allowed" : "auto"
+                  }}
+                  value="Rahul Kumar Sahu"
+                  disabled={!this.state.edit}
+                />
                 <p>Email</p>
-                <input type="text" value="sahurahul145@gmail.com" />
+                <input
+                  style={{
+                    cursor: !this.state.edit ? "not-allowed" : "auto"
+                  }}
+                  type="text"
+                  value="asd"
+                  disabled={!this.state.edit}
+                />
               </div>
               <div className="general-right-sec">
                 <p>Phone No.</p>
-                <input type="text" value="Rahul Kumar Sahu" />
+                <input
+                  style={{
+                    cursor: !this.state.edit ? "not-allowed" : "auto"
+                  }}
+                  type="text"
+                  value="Rahul Kumar Sahu"
+                  disabled={!this.state.edit}
+                />
                 <p>DOB</p>
                 <input
                   type="date"
-                  value="<?php echo date('04 /04 / 2019'); ?>"
+                  value=""
+                  disabled={!this.state.edit}
+                  style={{
+                    cursor: !this.state.edit ? "not-allowed" : "auto"
+                  }}
                 />
               </div>
             </div>
+            {this.state.edit ?  <button style={{
+              margin: "12px 0",
+              background: "#ea0a8c",
+              padding: "13px 54px",
+              color: "white",
+              border: "none",
+              borderRadius: "25px"
+            }} onClick={this.saveAddress}>SAVE</button> : null}
           </div>
         </div>
-
         {/* <RightSection/> */}
       </>
     );

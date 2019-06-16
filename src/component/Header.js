@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import "../scss/style.css";
 import "../scss/normalize.css";
 import "../scss/main.css";
@@ -11,15 +11,12 @@ import {
   NotificationManager
 } from "react-notifications";
 import "react-notifications/lib/notifications.css";
-import RBCarousel from "react-bootstrap-carousel";
-import InfiniteCarousel from "react-leaf-carousel";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
 import AccountKit from "react-facebook-account-kit";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import ScrollArea from "react-scrollbar";
-import { Container, Row, Col } from "reactstrap";
+import CreateModal from "./UI/CreateAccountModal/Modal";
 const styles = { height: 400, width: "100%" };
 
 class Header extends Component {
@@ -27,6 +24,7 @@ class Header extends Component {
     super(props);
     this.state = {
       show: false,
+      showCreateAccount: false,
       userdata: null,
       UserProfileData: [],
       Language: "en"
@@ -93,6 +91,16 @@ class Header extends Component {
   failure = response => {
     console.log(response);
   };
+
+  createAccountHandler = () => {
+    this.handleClose();
+    setTimeout(() => {
+      this.setState(preState => {
+        return { showCreateAccount: !this.state.showCreateAccount };
+      });
+    }, 500);
+  };
+
   render() {
     const responseFacebook = response => {
       console.log(response);
@@ -107,7 +115,10 @@ class Header extends Component {
         <header>
           <div className="logo">
             <a href="javascript:;">
-              <img src={require("../assets/img/svg_image/logo.svg")} />
+              <img
+                src={require("../assets/img/svg_image/logo.svg")}
+                alt="log_image"
+              />
             </a>
           </div>
           <ul className="header_search_section">
@@ -120,6 +131,7 @@ class Header extends Component {
                 <img
                   src={require("../assets/img/svg_image/search_white_icon.svg")}
                   width="17px"
+                  alt="seach_icon"
                 />{" "}
                 SEARCH
               </a>
@@ -131,6 +143,7 @@ class Header extends Component {
                 <a href="javascript:;">
                   <img
                     src={require("../assets/img/svg_image/notification.svg")}
+                    alt="notification_icon"
                   />
                 </a>
                 <ul className="dropdown-menu">
@@ -149,7 +162,10 @@ class Header extends Component {
             </li>
             <li>
               <NavLink to={"/checkout"}>
-                <img src={require("../assets/img/svg_image/cart.svg")} alt="checkout_image"/>
+                <img
+                  src={require("../assets/img/svg_image/cart.svg")}
+                  alt="checkout_image"
+                />
               </NavLink>
             </li>
             <li>
@@ -178,7 +194,7 @@ class Header extends Component {
                       My address
                     </a>
                   </li>
-                  {this.state.Language == "en" ? (
+                  {this.state.Language === "en" ? (
                     <li onClick={() => this.LanguageChange("hi")}>
                       <a>
                         <span>
@@ -207,7 +223,10 @@ class Header extends Component {
                   <li>
                     <a href="javascript:;" onClick={this.logout}>
                       <span>
-                        <img src={require("../assets/img/power.png")} alt="" />
+                        <img
+                          src={require("../assets/img/power.png")}
+                          alt="power_image"
+                        />
                       </span>
                       Logout
                     </a>
@@ -264,7 +283,11 @@ class Header extends Component {
                     )}
                   </AccountKit>
                   <div className="account-section">
-                    <a href="javascript:;" className="create-account-button">
+                    <a
+                      href="#"
+                      onClick={this.createAccountHandler}
+                      className="create-account-button"
+                    >
                       Create Account ?
                     </a>
                     <a href="javascript:;" className="forgate-password-button">
@@ -276,7 +299,10 @@ class Header extends Component {
                     <ul>
                       <li>
                         <a href="javascript:;">
-                          <img src={require("../assets/img/facebook.png")} />
+                          <img
+                            src={require("../assets/img/facebook.png")}
+                            alt="facebook_image"
+                          />
                         </a>
                       </li>
                       <li>
@@ -286,9 +312,9 @@ class Header extends Component {
                           render={renderProps => (
                             <img
                               src={require("../assets/img/google-plus.png")}
-                              alt="my image"
                               onClick={renderProps.onClick}
                               disabled={renderProps.disabled}
+                              alt="google_image"
                             />
                           )}
                           onSuccess={responseGoogle}
@@ -302,6 +328,9 @@ class Header extends Component {
             </div>
           </div>
         </Modal>
+        {this.state.showCreateAccount ? (
+          <CreateModal show={this.state.showCreateAccount} />
+        ) : null}
         <NotificationContainer />
       </>
     );

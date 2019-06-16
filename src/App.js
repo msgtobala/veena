@@ -17,6 +17,7 @@ import Checkout from "./pages/checkout/checkout";
 import ProductHistory from "./pages/checkout/ProductHistory/ProductHistory";
 import Subscription from "./pages/Subscription/Subscription";
 import DetailsPage from './pages/DetailsPage/DetailsPage';
+import Playlist from "./pages/Playlist/Playlist";
 
 class App extends Component {
   render() {
@@ -34,6 +35,7 @@ class App extends Component {
             <Route path="/history" component={ProductHistory} />
             <Route path="/subscribe" component={Subscription} />
             <Route path="/details" component={DetailsPage} />
+            <Route path="/playlist" component={Playlist} />
           </Switch>
         </div>
       </Router>

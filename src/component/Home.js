@@ -244,7 +244,10 @@ class Home extends Component {
                     <div key={index}>
                       <div
                         style={{
-                          cursor: "pointer"
+                          cursor: "pointer",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center"
                         }}
                         onClick={e => this.loadAlbum(e, row, "albums")}
                         className="album-slider-item"
@@ -297,7 +300,10 @@ class Home extends Component {
                           <div key={index}>
                             <div
                               style={{
-                                cursor: "pointer"
+                                cursor: "pointer",
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center"
                               }}
                               onClick={e => this.loadAlbum(e, row, "songs")}
                               className="album-slider-item"
@@ -357,7 +363,10 @@ class Home extends Component {
                     <div key={index}>
                       <div
                         style={{
-                          cursor: "pointer"
+                          cursor: "pointer",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center"
                         }}
                         onClick={e => this.loadAlbum(e, row, "songs")}
                         className="album-slider-item"
@@ -409,7 +418,10 @@ class Home extends Component {
                     <div key={index}>
                       <div
                         style={{
-                          cursor: "pointer"
+                          cursor: "pointer",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center"
                         }}
                         onClick={e => this.loadAlbum(e, row, "albums")}
                         className="album-slider-item"
@@ -535,7 +547,7 @@ class Home extends Component {
             </div>
           </div>
         </div>
-        {/* <RightSection /> */}
+        <RightSection />
       </>
     );
   }
