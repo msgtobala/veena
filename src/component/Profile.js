@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import '../scss/style.css';
-import '../scss/normalize.css';
-import '../scss/main.css';
-import '../scss/custome_audio_video_player.css';
-import '../scss/jplayer.blue.monday.min.css';
-import axios from 'axios';
+import React, { Component } from "react";
+import "../scss/style.css";
+import "../scss/normalize.css";
+import "../scss/main.css";
+import "../scss/custome_audio_video_player.css";
+import "../scss/jplayer.blue.monday.min.css";
+import axios from "axios";
 import RBCarousel from "react-bootstrap-carousel";
-import InfiniteCarousel from 'react-leaf-carousel';
-import GoogleLogin from 'react-google-login';
-import AccountKit from 'react-facebook-account-kit';
-import Header from './Header';
-import LeftSection from './LeftSection';
-import RightSection from './RightSection';
+import InfiniteCarousel from "react-leaf-carousel";
+import GoogleLogin from "react-google-login";
+import AccountKit from "react-facebook-account-kit";
+import Header from "./Header";
+import LeftSection from "./LeftSection";
+import RightSection from "./RightSection";
 const styles = { height: 400, width: "100%" };
 
 class Profile extends Component {
@@ -22,22 +22,19 @@ class Profile extends Component {
     };
   }
 
-  facebookResponse = (resp) => {
+  facebookResponse = resp => {
     console.log("hiiii response received" + resp);
-
-  }
-  failure = (response) => {
+  };
+  failure = response => {
     console.log(response);
-
-  }
+  };
   render() {
-
     let { leftIcon, rightIcon } = this.state;
 
     return (
       <>
         <Header />
-        <LeftSection/>
+        <LeftSection />
         <div className="middle-section">
           <div className="image-and-button-section">
             <div className="profile-left-section">
@@ -48,18 +45,32 @@ class Profile extends Component {
               <p>natashamarya@gmail.com</p>
             </div>
             <div className="profile-right-section">
-              <a href="javascript:;" className="shop-cart-button" style={{ right: "-30px" }}>
+              <a
+                href="javascript:;"
+                className="shop-cart-button"
+                style={{ right: "-30px" }}
+              >
                 <div className="text">
                   <span className="count">90 DAYS</span>
                   <span className="Name">REMAIN</span>
                 </div>
                 <span className="img-section">
-                  <img src={require("../assets/img/svg_image/cart-white.svg")} />
+                  <img
+                    src={require("../assets/img/svg_image/cart-white.svg")}
+                  />
                 </span>
               </a>
               <div className="button-section">
-                <a href="javascript:;" className="track-order-button" style={{ marginRight: "18px" }}>Edit Profile</a>
-                <a href="javascript:;" className="download-invoice-button">Upgrade Now</a>
+                <a
+                  href="javascript:;"
+                  className="track-order-button"
+                  style={{ marginRight: "18px" }}
+                >
+                  Edit Profile
+                </a>
+                <a href="javascript:;" className="download-invoice-button">
+                  Upgrade Now
+                </a>
               </div>
             </div>
           </div>
@@ -76,16 +87,18 @@ class Profile extends Component {
                 <p>Phone No.</p>
                 <input type="text" value="Rahul Kumar Sahu" />
                 <p>DOB</p>
-                <input type="date" value="<?php echo date('04 /04 / 2019'); ?>" />
+                <input
+                  type="date"
+                  value="<?php echo date('04 /04 / 2019'); ?>"
+                />
               </div>
             </div>
           </div>
         </div>
 
-        <RightSection/>
-        
+        {/* <RightSection/> */}
       </>
-    )
+    );
   }
 }
 

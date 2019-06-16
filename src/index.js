@@ -11,8 +11,9 @@ import * as serviceWorker from "./serviceWorker";
 import "./index.css";
 import App from "./App";
 import reducer from "./store/reducer";
-import { loadProductSaga } from "./store/sagas";
+import { watchVeena } from "./store/index";
 import createSagaMiddleware from "redux-saga";
+import loggerMiddleware from "./middlewares/logger";
 
 const rootReducer = combineReducers({
   str: reducer
@@ -25,23 +26,12 @@ const composeEnhancers =
 
 const sagaMiddleware = createSagaMiddleware();
 
-const logger = store => {
-  return next => {
-    return action => {
-      console.log("[Middle Ware] Dispatching", action);
-      const result = next(action);
-      console.log("[Middle Ware]", store.getState());
-      return result;
-    };
-  };
-};
-
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(logger, sagaMiddleware))
+  composeEnhancers(applyMiddleware(loggerMiddleware, sagaMiddleware))
 );
 
-sagaMiddleware.run(loadProductSaga);
+sagaMiddleware.run(watchVeena);
 
 ReactDOM.render(
   <Provider store={store}>

@@ -22,9 +22,10 @@ import {
   NotificationManager
 } from "react-notifications";
 import "react-notifications/lib/notifications.css";
-import { loadProduct } from "../store/actions";
+import { saveProduct } from "../store/actions";
 
 const styles = { height: 400, width: "100%" };
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -97,9 +98,9 @@ class Home extends Component {
     this.setState({ show: false });
   };
 
-  loadAlbum = (event, type, album) => {
-    console.log(event);
-    this.props.loadProduct(album)
+  loadAlbum = (event, album, type) => {
+    this.props.loadProduct(album.id, type);
+    this.props.history.push("/details");
   };
 
   handleShow = () => {
@@ -245,7 +246,7 @@ class Home extends Component {
                         style={{
                           cursor: "pointer"
                         }}
-                        onClick={e => this.loadAlbum(row, "popular_album")}
+                        onClick={e => this.loadAlbum(e, row, "albums")}
                         className="album-slider-item"
                       >
                         <img
@@ -298,7 +299,7 @@ class Home extends Component {
                               style={{
                                 cursor: "pointer"
                               }}
-                              onClick={e => this.loadAlbum(row, "recommended_album")}
+                              onClick={e => this.loadAlbum(e, row, "songs")}
                               className="album-slider-item"
                             >
                               <img
@@ -358,7 +359,7 @@ class Home extends Component {
                         style={{
                           cursor: "pointer"
                         }}
-                        onClick={e => this.loadAlbum(row, "recommended_video")}
+                        onClick={e => this.loadAlbum(e, row, "songs")}
                         className="album-slider-item"
                       >
                         <img
@@ -367,7 +368,6 @@ class Home extends Component {
                           alt=""
                         />
                         <h6>{language === "En" ? row.name.en : row.name.hi}</h6>
-                        {/* <p>Kawar Jeet Singh</p> */}
                       </div>
                     </div>
                   ))}
@@ -406,14 +406,12 @@ class Home extends Component {
                   scrollOnDevice={true}
                 >
                   {latest_albums.data.map((row, index) => (
-                    // console.log("sgar",row.cover_images.length )
-
                     <div key={index}>
                       <div
                         style={{
                           cursor: "pointer"
                         }}
-                        onClick={e => this.loadAlbum(row, "new_album")}
+                        onClick={e => this.loadAlbum(e, row, "albums")}
                         className="album-slider-item"
                       >
                         {row.cover_images.length !== 0 ? (
@@ -424,7 +422,6 @@ class Home extends Component {
                           />
                         ) : null}
                         <h6>{language === "En" ? row.name.en : row.name.hi}</h6>
-                        {/* <p>Kawar Jeet Singh</p> */}
                       </div>
                     </div>
                   ))}
@@ -464,9 +461,7 @@ class Home extends Component {
                   {trending_artist.data.map((row, index) =>
                     row.photo !== null ? (
                       <div key={index}>
-                        <div
-                          className="album-slider-item"
-                        >
+                        <div className="album-slider-item">
                           <img
                             src={row.photo.url}
                             style={{ height: 150, width: 150 }}
@@ -546,12 +541,13 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-
-});
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
-  loadProduct: data => dispatch(loadProduct(data)),
+  loadProduct: (data, prodType) => dispatch(saveProduct(data, prodType))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

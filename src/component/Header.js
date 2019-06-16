@@ -43,7 +43,6 @@ class Header extends Component {
     //         show: true
     //     })
     // }
-    console.log(userdata);
   }
   handleClose = () => {
     this.setState({ show: false });
